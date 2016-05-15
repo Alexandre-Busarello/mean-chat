@@ -1,0 +1,83 @@
+<!doctype html>
+<html>	
+	<head>
+		<meta charset="utf-8">
+		<title>Mean chat</title>
+		
+		<script type="text/javascript" src="/bower_components/jquery/dist/jquery.min.js"></script>
+		<script type="text/javascript" src= "/bower_components/angular/angular.min.js"></script>
+		<script type="text/javascript" src="js/login.js"></script>
+		
+		<link href="/bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+		<link rel="stylesheet" type="text/css" href="css/style.css"/>	
+	</head>
+	<body ng-app="login">
+		<div ng-controller="loginController" class="container">
+			<div class="row">				
+				<div class="col-md-6 col-md-offset-3">
+					<h2>Mean chat</h2>
+					<div class="panel panel-login">
+						<div class="panel-heading">
+							<div class="row">
+								<div class="col-xs-6">
+									<a href ng-class="{active: stage == 1}" ng-click="stage = 1">Login</a>
+								</div>
+								<div class="col-xs-6">
+									<a href ng-class="{active: stage == 2}" ng-click="stage = 2">Cadastro</a>
+								</div>
+							</div>
+							<hr>
+						</div>
+						<div class="panel-body">
+							<div class="row">
+								<div class="col-lg-12">
+									<form name="loginForm" ng-show="stage == 1">
+										<div class="form-group">
+											<input ng-model="login.user" type="text" name="username" tabindex="1" class="form-control" placeholder="Usuário" value="" required />
+										</div>
+										<div class="form-group">
+											<input ng-model="login.password" type="password" name="password" tabindex="2" class="form-control" placeholder="Senha" required />
+										</div>
+										<div class="form-group">
+											<div class="row">
+												<div class="col-sm-6 col-sm-offset-3">
+													<input ng-click="loginClick(login.user, login.password)" type="submit" tabindex="4" class="form-control btn btn-login" value="Entrar">
+												</div>
+											</div>
+										</div>
+									</form>
+									<form name="registerForm" ng-show="stage == 2">
+										<div ng-repeat="error in errors" class="alert alert-danger" role="alert">
+										  <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+										  <span class="sr-only">Error:</span>
+										  <span ng-bind="error"></span>
+										</div>										
+									
+										<div class="form-group">
+											<input ng-model="user.name" type="text" name="name" tabindex="1" class="form-control" placeholder="Nome" value="" required />
+										</div>									
+										<div class="form-group">
+											<input ng-model="user.login" type="text" name="login" tabindex="2" class="form-control" placeholder="Usuário" value=""  required />
+										</div>
+										<div class="form-group">
+											<input ng-model="user.password" type="password" name="password" tabindex="3" class="form-control" placeholder="Senha"  required />
+										</div>
+										<div class="form-group">
+											<div class="row">
+												<div class="col-sm-6 col-sm-offset-3">
+													<input ng-click="registerClick()" type="submit" name="register-submit" tabindex="5" class="form-control btn btn-register" value="Registrar">
+												</div>
+											</div>
+										</div>
+									</form>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>	
+		
+		<script type="text/javascript" src="/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+	</body>
+</html>

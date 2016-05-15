@@ -1,0 +1,94 @@
+<!doctype html>
+<html>	
+	<head>
+		<meta charset="utf-8">
+		<title>Mean chat - Rooms</title>
+		
+		<script src="/socket.io/socket.io.js"></script>
+		<script type="text/javascript" src="/bower_components/jquery/dist/jquery.min.js"></script>
+		<script type="text/javascript" src= "/bower_components/angular/angular.min.js"></script>		
+		<script type="text/javascript" src="js/rooms.js"></script>
+		
+		<link href="/bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+		<link rel="stylesheet" type="text/css" href="css/style.css"/>	
+	</head>
+	<body ng-app="app">
+		<div ng-controller="roomsController" class="container">
+			<table ng-show="rooms && rooms.length > 0 && !room" class="table"> 
+				<caption>Salas disponiveis.</caption> 
+				<thead> 
+					<tr>  
+						<th>Nome</th> 
+						<th>Descrição</th> 
+						<th></th>
+					</tr> 
+				</thead> 
+				<tbody> 
+					<tr ng-repeat="room in rooms | orderBy:'name'"> 
+						<td><span ng-bind="room.name"></span></td> 
+						<td><span ng-bind="room.description"></span></td> 
+						<td><button ng-click="goRoom(room._id)" type="button" class="btn btn-primary">Entrar</button></td> 
+					</tr> 
+				</tbody> 
+			</table>
+			<div ng-show="rooms && rooms.length > 0 && !room">
+				<button type="button" class="btn btn-success" data-toggle="modal" data-target="#createRoomModal">Criar sala</button>
+				<button ng-click="logout()" type="button" class="btn btn-danger">Logout</button>
+			</div>
+			
+			<div ng-show="rooms && rooms.length == 0 && !room">
+				<h2>Nenhuma sala disponível. Seja o primeiro a criar uma sala.</h2>
+				<button type="button" class="btn btn-success" data-toggle="modal" data-target="#createRoomModal">Criar sala</button>
+			</div>
+			
+			<div ng-show="room">
+				<h2><span ng-bind="room.name"></span></h2>
+				<div class="message-box">
+					<ul id="messages">
+						<li ng-repeat="message in room.messages track by $index">
+							<span ng-bind="message"></span>
+						</li>					
+					</ul>
+				</div>
+				<div class="toolbar-chat">
+					<input ng-model="message" id="data" tabindex="1" autocomplete="off" />
+					<button ng-click="sendMessage(message)" id="send-message" type="submit" class="btn btn-success">Enviar</button>
+					<button ng-click="exitRoom()" type="button" class="btn btn-danger">Sair</button>
+				</div>
+			</div>
+			
+			<div class="modal fade" id="createRoomModal" tabindex="-1" role="dialog">
+			    <div class="modal-dialog" role="document">
+					<div class="modal-content">
+							<div class="modal-header">
+								<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+								<h4 class="modal-title" id="myModalLabel">Criar sala</h4>
+							</div>
+						<div class="modal-body">
+							<div ng-repeat="error in errors" class="alert alert-danger" role="alert">
+								<span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+								<span class="sr-only">Error:</span>
+								<span ng-bind="error"></span>
+							</div>							  
+					  
+							<div class="form-group">
+								<label>Nome</label>
+								<input ng-model="room.name" type="text" name="name" tabindex="1" class="form-control" placeholder="Nome da sala" value="">
+							</div>				  
+							<div class="form-group">
+								<label>Descrição</label>
+								<input ng-model="room.description" type="text" name="name" tabindex="2" class="form-control" placeholder="Descrição" value="">
+							</div>												
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+							<button ng-click="createRoom()" type="button" class="btn btn-primary">Criar</button>
+						</div>
+					</div>
+			    </div>
+			</div>			
+		</div>	
+		
+		<script type="text/javascript" src="/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+	</body>
+</html>

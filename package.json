@@ -1,0 +1,23 @@
+{
+  "name": "pedido",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "alexandre.busarello",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.14.1",
+    "consolidate": "^0.13.1",
+    "ejs-locals": "^1.0.2",
+    "enum": "^2.2.0",
+    "express": "^4.13.3",
+    "http": "0.0.0",
+    "mongoose": "^4.1.12",
+    "mongoose-auto-increment": "^5.0.1",
+    "reload": "^0.5.0",
+    "swig": "^1.4.2"
+  }
+}

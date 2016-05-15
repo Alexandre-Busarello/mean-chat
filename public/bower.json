@@ -1,0 +1,28 @@
+{
+  "name": "orders-now",
+  "homepage": "https://github.com/Alexandre-Busarello/orders_now",
+  "authors": [
+    "alexandre.busarello"
+  ],
+  "description": "",
+  "main": "",
+  "moduleType": [
+    "node"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "startbootstrap-sb-admin-2": "~1.0.7",
+    "angular": "~1.4.7",
+    "at-table": "~1.0.6",
+    "angular-google-maps": "~2.2.1",
+    "angular-cookies": "~1.5.5"
+  }
+}
