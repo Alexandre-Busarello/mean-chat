@@ -17,7 +17,7 @@ exports.initialize = function(app) {
 	app.get('/api/rooms', getRooms);
 	app.get('/api/rooms/:id', getRoom);
 	app.post('/api/rooms', postRoom);
-	app.put('/api/rooms/:id', putMessage);
+	app.put('/api/rooms/:id/message', putMessage);
 	
 	function getRooms(request, response) {
         response.status(500, 'Erro não esperado.');

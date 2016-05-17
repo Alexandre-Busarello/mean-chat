@@ -6,13 +6,14 @@
 		
 		<script src="/socket.io/socket.io.js"></script>
 		<script type="text/javascript" src="/bower_components/jquery/dist/jquery.min.js"></script>
-		<script type="text/javascript" src= "/bower_components/angular/angular.min.js"></script>		
-		<script type="text/javascript" src="js/rooms.js"></script>
+		<script type="text/javascript" src= "/bower_components/angular/angular.min.js"></script>	,
+		<script type="text/javascript" src="/js/room/room-services.js"></script>	
+		<script type="text/javascript" src="/js/room/room-controller.js"></script>		
 		
 		<link href="/bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
 		<link rel="stylesheet" type="text/css" href="css/style.css"/>	
 	</head>
-	<body ng-app="app">
+	<body ng-app="rooms">
 		<div ng-controller="roomsController" class="container">
 			<table ng-show="rooms && rooms.length > 0 && !room" class="table"> 
 				<caption>Salas disponiveis.</caption> 
